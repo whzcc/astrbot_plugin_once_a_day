@@ -1,6 +1,6 @@
 name: once-a-day # 这是你的插件的唯一识别名。
 desc: 将某条指令设为“每个用户每天只能使用一次，第二次使用时所发消息会被修饰”，便于大模型识别。 # 插件简短描述
 help: 请查看代码。 # 插件的帮助信息
-version: v1.0 # 插件版本号。格式：v1.1.1 或者 v1.1
+version: v1.1 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: whzc # 作者
 repo: https://github.com/whzcc/astrbot_plugin_once_a_day # 插件的仓库地址
