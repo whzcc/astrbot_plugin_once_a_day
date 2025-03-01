@@ -51,13 +51,14 @@ class Main(Star):
                     with open(data_file,"w") as f:
                         json.dump(read_content,f)
                     return True
-                
-        sender_id = event.get_sender_id()
-        is_ok = is_ok(sender_id)
+        
+        if req.prompt.startswith("/运势"):
+            
+            sender_id = event.get_sender_id()
+            is_ok = is_ok(sender_id)
+            logger.info(f"用户{sender_id}是否还可以请求“运势”:{is_ok}")
 
-        logger.info(f"用户{sender_id}是否还可以请求“运势”:{is_ok}")
-
-        if is_ok:
-            return
-        else:
-            req.prompt = "/346" # 用户已经不能请求运势时，将他的prompt修改为/346
+            if is_ok:
+                return
+            else:
+                req.prompt = "/346" # 用户已经不能请求运势时，将他的prompt修改为/346
