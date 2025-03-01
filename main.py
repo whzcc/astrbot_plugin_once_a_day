@@ -3,10 +3,12 @@ from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 import sqlite3
 from datetime import datetime
+import os
 
 # 数据库部分开始
 # 连接到SQLite数据库（如果数据库不存在，则会自动创建）
-conn = sqlite3.connect('once_a_day.db')
+plugin_dir = os.pathpath.dirname(os.path.abspath(__file__))
+conn = sqlite3.connect(plugin_dir+'once_a_day.db')
 cursor = conn.cursor()
 # 创建表来存储用户输入的字符串和日期
 cursor.execute('''
@@ -67,7 +69,7 @@ class MyPlugin(Star):
         
         # 若用户今日未使用该指令，则is_ok(sender_id)返回True，否则返回False
         is_ok = is_input_allowed(sender_id)
-        logger.info(is_ok)
+        logger.info(f"用户{sender_id}是否还可以请求“运势”:{is_ok}")
         if is_ok:
             yield event.plain_result(f"Hello, {sender_id}, 你发了 {message_str}!") # 发送一条纯文本消息
         else:
