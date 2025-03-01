@@ -73,3 +73,5 @@ class MyPlugin(Star):
             yield event.plain_result(f"No!, {sender_id}, 你发了 {message_str}!") # 发送一条纯文本消息
 
         logger.info(message_chain)
+        print(event)
+        print(event.get_message_str())
