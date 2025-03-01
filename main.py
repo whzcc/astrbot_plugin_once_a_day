@@ -19,6 +19,7 @@ class Main(Star):
                 f.write("{}")
         with open(self.data_file, "r", encoding='utf-8') as f:
             self.memories = json.load(f)
+            logger.info("query_history.json is created")
 
     # 注册指令的装饰器。指令名为“运势”。注册成功后，发送 `/运势` 就会触发这个指令，并将用户名写入数据
     @filter.command("运势")
@@ -30,7 +31,7 @@ class Main(Star):
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         
         # 若用户今日未使用该指令，则is_ok(sender_id)返回True，否则返回False
-        is_ok = is_ok(sender_id)
+        is_ok = True
         logger.info(f"用户{sender_id}是否还可以请求“运势”:{is_ok}")
         if is_ok:
             yield event.plain_result(f"Hello, {sender_id}, 你发了 {message_str}!") # 发送一条纯文本消息
