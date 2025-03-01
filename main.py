@@ -61,15 +61,15 @@ class MyPlugin(Star):
     @filter.command("运势")
     async def once_a_day(self, event: AstrMessageEvent):
         '''用户输入这个指令时，他的名字会被写入数据库''' # 这是 handler 的描述，将会被解析方便用户了解插件内容。建议填写。
-        user_name = event.get_sender_name()
+        sender_id = event.get_sender_id()
         message_str = event.message_str # 用户发的纯文本消息字符串
         message_chain = event.get_messages() # 用户所发的消息的消息链 # from astrbot.api.message_components import *
         
-        # 若用户今日未使用该指令，则is_ok(user_name)返回True，否则返回False
-        is_ok = is_input_allowed(user_name)
+        # 若用户今日未使用该指令，则is_ok(sender_id)返回True，否则返回False
+        is_ok = is_input_allowed(sender_id)
         if is_ok:
-            yield event.plain_result(f"Hello, {user_name}, 你发了 {message_str}!") # 发送一条纯文本消息
+            yield event.plain_result(f"Hello, {sender_id}, 你发了 {message_str}!") # 发送一条纯文本消息
         else:
-            yield event.plain_result(f"No!, {user_name}, 你发了 {message_str}!") # 发送一条纯文本消息
+            yield event.plain_result(f"No!, {sender_id}, 你发了 {message_str}!") # 发送一条纯文本消息
 
         logger.info(message_chain)
