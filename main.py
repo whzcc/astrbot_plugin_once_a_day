@@ -7,7 +7,7 @@ import os
 
 # 数据库部分开始
 # 连接到SQLite数据库（如果数据库不存在，则会自动创建）
-plugin_dir = os.pathpath.dirname(os.path.abspath(__file__))
+plugin_dir = os.path.dirname(os.path.abspath(__file__))
 conn = sqlite3.connect(plugin_dir+'once_a_day.db')
 cursor = conn.cursor()
 # 创建表来存储用户输入的字符串和日期
