@@ -5,6 +5,7 @@ import os,json,datetime
 from astrbot.api.provider import ProviderRequest
 
 @register("once-a-day", "whzc", "将某条指令设为“每个用户每天只能使用一次，第二次使用时所发消息会被修饰”，便于大模型识别", "1.0.0", "repo url")
+
 class Main(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -24,6 +25,7 @@ class Main(Star):
     @filter.on_llm_request()
     async def daily_luck(self, event: AstrMessageEvent, req: ProviderRequest): # 请注意有三个参数    
         # 若用户今日未使用该指令，则is_ok(sender_id)返回True，否则返回False
+        '''用户每天都有一次机会通过这条指令请求llm（工作流）获得当日的运势。当用户在同一天第二次输入时，插件修改输入给llm的prompt。详见Github。'''
         def is_ok(sender_id):
             sender_id = str(sender_id)
             today = str(datetime.date.today())
