@@ -41,6 +41,12 @@ class Main(Star):
                         return False      
                     else:   # 值不是今天
                         logger.info(f"在数据里找到了{sender_id}键，但值（请求日期）不是今天，故同意其指令")
+                        new_data = {
+                        sender_id: today
+                        }
+                        read_content.update(new_data)
+                        with open(data_file,"w") as f:
+                            json.dump(read_content,f)
                         return True
                 else: # 如果无这个“sender_id”的键，则向json里追加数据（使用dic的update方法）
                     logger.info(f"在数据里未找到{sender_id}键，已未其创建键值对，并同意其指令")
