@@ -67,4 +67,4 @@ class Main(Star):
             if is_ok:
                 return
             else:
-                req.prompt = "/346" # 用户已经不能请求运势时，将他的prompt修改为/346
+                req.prompt = "DJAFANC3" # 用户已经不能请求运势时，将他的prompt修改为DJAFANC3
