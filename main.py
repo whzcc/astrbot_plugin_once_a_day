@@ -49,7 +49,7 @@ class Main(Star):
                             json.dump(read_content,f)
                         return True
                 else: # 如果无这个“sender_id”的键，则向json里追加数据（使用dic的update方法）
-                    logger.info(f"在数据里未找到{sender_id}键，已未其创建键值对，并同意其指令")
+                    logger.info(f"在数据里未找到{sender_id}键，已为其创建键值对，并同意其指令")
                     new_data = {
                         sender_id: today
                         }
