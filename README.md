@@ -1,4 +1,4 @@
-# Once-a-day 
+# once_a_day 
 
 ## AstrBot 插件 
 
