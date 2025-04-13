@@ -4,7 +4,7 @@ from astrbot.api import logger
 import os,json,datetime
 from astrbot.api.provider import ProviderRequest
 
-@register("once-a-day", "whzc", "将某条指令设为“每个用户每天只能使用一次，第二次使用时所发消息会被修饰”，便于大模型识别", "1.0.0", "repo url")
+@register("once_a_day", "whzc", "将某条指令设为“每个用户每天只能使用一次，第二次使用时所发消息会被修饰”，便于大模型识别", "1.0.0", "repo url")
 
 class Main(Star):
     def __init__(self, context: Context):
